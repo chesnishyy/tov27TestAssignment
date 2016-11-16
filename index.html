@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="aside">
+            <img src="img/main_marker.png" alt="" class="main-marker">
+            <span class="shop-near">МАГАЗИНЫ</span>
+            <span class="shop-near">РЯДОМ</span>
+
+            <span class="select-town">Выберите город</span>
+            <div class="select">
+
+
+                <select name="select-city" id="select-city" onchange="loadShops(this.selectedOptions[0].value)">
+
+                    <option value="0">-</option>
+                    <option value="1">Киев</option>
+                    <option value="2">Львов</option>
+                    <option value="3">Одесса</option>
+                </select>
+            </div>
+
+            <div class="shop-list" id="shop-list">
+
+            </div>
+
+
+
+        </div>
+        <div id="map"></div>
+    </div>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXbp_v_JOW55IrI5mtSQs1Ec4TapgeOmY&callback=initMap"
+        async defer></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

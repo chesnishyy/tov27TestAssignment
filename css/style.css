@@ -1,0 +1,89 @@
+
+@font-face {
+    font-family: 'DINPro Black';
+    src: url(../fonts/dinpro-black.otf) format("opentype");
+}
+@font-face {
+    font-family: 'DINPro Regular';
+    src: url(../fonts/dinpro-regular.otf) format("opentype");
+}
+
+
+html, body, .wrapper {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'DINPro Regular';
+    color: rgb(128, 128, 128);
+}
+
+.wrapper {
+    display: flex;
+}
+
+#map {
+    width: 66.67%;
+    height: 100%;
+}
+
+.aside {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    width: 33.33%;
+    height: 100%;
+}
+
+.main-marker {
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 25px;
+}
+
+.shop-near {
+    margin-left: 50px;
+    font-size: 30px;
+    font-family: 'DINPro Black';
+    color: rgb(77, 77, 77);
+}
+
+.select-town {
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 16px;
+}
+
+#select-city {
+    width: 270px;
+    height: 45px;
+    margin-top: 5px;
+    margin-left: 50px;
+    background: url(../img/arrow.png) no-repeat right;
+    border: thin solid rgb(128, 128, 128);
+    border-radius: 4px;
+    display: inline-block;
+    font-family: 'DINPro Regular';
+    color: rgb(128, 128, 128);
+    line-height: 16px;
+    padding: 8px 8px 8px 16px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.hide {
+    display: none;
+}
+
+.shop {
+    margin-top: 50px;
+    margin-left: 50px;
+
+}
+
+.work-time {
+    background: url(../img/pin.png) no-repeat right;
+}
+
+.title {
+    font-family: 'DINPro Black';
+}
