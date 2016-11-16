@@ -7,7 +7,12 @@
     var myArr = JSON.parse(request.responseText);
 
     var map;
+    var directionsService;
+    var directionsDisplay;
     function initMap() {
+
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer;
 
         var startMapCenter = {lat: 49.685783, lng: 31.623217};
         map = new google.maps.Map(document.getElementById('map'), {
@@ -15,6 +20,8 @@
             zoom: 6
         });
 
+
+        directionsDisplay.setMap(map);
 
         myArr.forEach(function (item) {
             var latLng = {lat: item[1], lng:item[2]};
@@ -32,14 +39,17 @@
 
             });
 
-
         });
 
     }
 
+    var directHandler = function() {
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+    };
 
     var shopList = document.getElementById('shop-list');
 
+    var markerPosition;
 
     function createShopList() {
         myArr.forEach(function (item) {
@@ -59,6 +69,16 @@
             workTime.innerHTML = item[5];
             workTime.classList.add('work-time');
             shop.appendChild(workTime);
+
+            shop.addEventListener('click', function () {
+                map.setZoom(12);
+                markerPosition = {lat: item[1], lng: item[2]};
+                map.setCenter(markerPosition);
+            });
+            shop.addEventListener('dblclick', directHandler);
+
+
+
             shopList.appendChild(shop);
         });
     }
@@ -77,17 +97,33 @@
 
             if (shops[i].classList[1] == region) {
                 shops[i].classList.remove('hide');
-                myArr.forEach(function (item) {
-
-                    if (item[4] == shops[i].children[1].innerHTML) {
-                        shops[i].addEventListener('click', function () {
-                            map.setZoom(12);
-                            var markerPosition = {lat: item[1], lng: item[2]};
-                            map.setCenter(markerPosition);
-                        });
-                    }
-                });
-
             }
         }
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+            origin: userPosition,
+            destination: markerPosition,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', getLocation);
+    
+    function getLocation() {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(getPosition);
+
+        }
+    }
+    var userPosition;
+    function getPosition(position) {
+        userPosition = {lat: position.coords.latitude, lng: position.coords.longitude};
     }
