@@ -28,10 +28,11 @@ html, body, .wrapper {
 
 .aside {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     align-items: flex-start;
     width: 33.33%;
     height: 100%;
+    overflow: scroll;
 }
 
 .main-marker {
