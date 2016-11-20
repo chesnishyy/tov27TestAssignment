@@ -1,13 +1,12 @@
-
 @font-face {
     font-family: 'DINPro Black';
     src: url(../fonts/dinpro-black.otf) format("opentype");
 }
+
 @font-face {
     font-family: 'DINPro Regular';
     src: url(../fonts/dinpro-regular.otf) format("opentype");
 }
-
 
 html, body, .wrapper {
     height: 100%;
@@ -18,21 +17,39 @@ html, body, .wrapper {
 }
 
 .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 }
 
 #map {
-    width: 66.67%;
+    width: 100%;
     height: 100%;
 }
 
 .aside {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
-    flex-flow: column wrap;
+    -webkit-flex-flow: column;
+    flex-flow: column;
     align-items: flex-start;
-    width: 33.33%;
+    -webkit-align-items: flex-start;
+    min-width: 400px;
     height: 100%;
-	overflow: scroll;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar
+{
+    width: 4px;
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb{
+    border-width:1px 1px 1px 2px;
+    border-color: #777;
+    background-color: #aaa;
 }
 
 .main-marker {
@@ -78,7 +95,6 @@ html, body, .wrapper {
 .shop {
     margin-top: 50px;
     margin-left: 50px;
-
 }
 
 .work-time {
