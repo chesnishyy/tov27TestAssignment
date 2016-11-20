@@ -20,7 +20,6 @@
             zoom: 6
         });
 
-
         directionsDisplay.setMap(map);
 
         myArr.forEach(function (item) {
@@ -77,8 +76,6 @@
             });
             shop.addEventListener('dblclick', directHandler);
 
-
-
             shopList.appendChild(shop);
         });
     }
@@ -91,12 +88,11 @@
 
         for (var i = 0; i < shops.length; i ++) {
 
-            if (shops[i].classList[1] != region) {
-                shops[i].classList.add('hide');
-            }
-
             if (shops[i].classList[1] == region) {
                 shops[i].classList.remove('hide');
+            }
+            else {
+                shops[i].classList.add('hide');
             }
         }
     }
